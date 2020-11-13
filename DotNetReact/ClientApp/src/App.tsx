@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Route } from 'react-router';
-import { Layout } from 'components/Layout';
-import { Home } from 'Pages/Home';
-import { FetchData } from 'Pages/FetchData';
+import Layout from 'components/Layout';
+import Home from 'Pages/Home';
+import FetchData from 'Pages/FetchData';
 import { Counter } from 'Pages/Counter';
 
 import './custom.css'
