@@ -1,30 +1,28 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
-interface Forecast {
-    date: String;
-    temperatureC: Number;
-    temperatureF: Number;
-    summary: String;
-}
+import { WeatherContext, IForecast } from "Context/WeatherContext"
 
 export default () => {
-    const [forecasts, setForecasts] = React.useState([]);
     const [loading, setLoading] = React.useState(false);
+
+    const { forecasts, setForecasts } = useContext(WeatherContext);
 
     const populateWeatherData = async () => {
         const response = await fetch('weatherforecast');
         const data = await response.json();
-        
+
         setForecasts(data);
 
         setLoading(false);
     }
 
     React.useEffect(() => {
-        populateWeatherData();
+        if (forecasts.length === 0) {
+            populateWeatherData();
+        }
     }, []);
 
-    const renderForecastsTable = (forecasts: Forecast[]) => {
+    const renderForecastsTable = (forecasts: IForecast[]) => {
         return (
             <table className='table table-striped' aria-labelledby="tabelLabel">
                 <thead>
