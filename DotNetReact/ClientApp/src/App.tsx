@@ -1,10 +1,12 @@
-import React from 'react';
+import * as React from 'react';
 import { Route } from 'react-router';
-import Layout from 'components/Layout';
-import Home from 'Pages/Home';
-import FetchData from 'Pages/FetchData';
 
-import { WeatherContext, IForecast } from "Context/WeatherContext"
+import Layout from './components/Layout';
+import Home from './Pages/Home';
+import FetchData from './Pages/FetchData';
+
+import { WeatherContext } from "./Context/WeatherContext"
+import { IForecast } from './models';
 
 import './custom.css'
 

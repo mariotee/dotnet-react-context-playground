@@ -1,13 +1,8 @@
 ﻿import React from "react";
 
-export interface IForecast {
-    date: string;
-    temperatureC: number;
-    temperatureF: number;
-    summary: string;
-}
+import { IForecast } from "../models";
 
 export const WeatherContext = React.createContext({
     forecasts: new Array<IForecast>(),
-    setForecasts: null as any,
+    setForecasts: (input: IForecast[]) => { },
 });

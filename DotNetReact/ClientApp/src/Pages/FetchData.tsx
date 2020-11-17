@@ -1,6 +1,8 @@
 import React, { useContext } from 'react';
 
-import { WeatherContext, IForecast } from "Context/WeatherContext"
+import { WeatherContext } from "../Context/WeatherContext"
+
+import { IForecast } from '../models';
 
 export default () => {
     const [loading, setLoading] = React.useState(false);

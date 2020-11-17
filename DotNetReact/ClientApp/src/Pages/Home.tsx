@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { WeatherContext } from "Context/WeatherContext";
+import { WeatherContext } from "../Context/WeatherContext";
 
 export default () => {
     const { forecasts, setForecasts } = React.useContext(WeatherContext);
