@@ -1,8 +1,16 @@
 using System;
+using System.Collections.Generic;
 
 namespace DotNetReact
 {
     public class WeatherForecast
+    {
+        public WeatherRecord Current { get; set; }
+        public IEnumerable<WeatherRecord> Hourly { get; set; }
+        public IEnumerable<WeatherRecord> Daily { get; set; }
+    }
+
+    public class WeatherRecord
     {
         public DateTime Date { get; set; }
 
