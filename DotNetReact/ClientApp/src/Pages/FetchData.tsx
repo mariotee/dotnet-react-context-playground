@@ -1,13 +1,13 @@
-import React, { useContext } from 'react';
+import * as React from 'react';
 
 import { WeatherContext } from "../Context/WeatherContext"
 
-import { IForecast } from '../models';
+import { IWeatherForecast, IWeatherRecord } from '../models';
 
 export default () => {
     const [loading, setLoading] = React.useState(false);
 
-    const { forecasts, setForecasts } = useContext(WeatherContext);
+    const { forecast, setForecasts } = React.useContext(WeatherContext);
 
     const populateWeatherData = async () => {
         const response = await fetch('weatherforecast');
@@ -19,12 +19,12 @@ export default () => {
     }
 
     React.useEffect(() => {
-        if (forecasts.length === 0) {
+        if (forecast.current === null) {
             populateWeatherData();
         }
     }, []);
 
-    const renderForecastsTable = (forecasts: IForecast[]) => {
+    const renderForecastsTable = (records: IWeatherRecord[]) => {
         return (
             <table className='table table-striped' aria-labelledby="tabelLabel">
                 <thead>
@@ -36,8 +36,8 @@ export default () => {
                     </tr>
                 </thead>
                 <tbody>
-                    {forecasts.map(forecast =>
-                        <tr key={forecast.date}>
+                    {records.map((forecast,i) =>
+                        <tr key={"tr"+i}>
                             <td>{forecast.date}</td>
                             <td>{forecast.temperatureC}</td>
                             <td>{forecast.temperatureF}</td>
@@ -56,7 +56,7 @@ export default () => {
             {
                 loading
                     ? <p><em>Loading...</em></p>
-                    : renderForecastsTable(forecasts)
+                    : renderForecastsTable(forecast.daily)
             }
         </div>
     );

@@ -63,7 +63,7 @@ namespace DotNetReact
             {
                 spa.Options.SourcePath = "ClientApp";
 
-                if (env.IsDevelopment())
+                if (env.IsDevelopment() || env.EnvironmentName == "Local")
                 {
                     spa.UseReactDevelopmentServer(npmScript: "start");
                 }

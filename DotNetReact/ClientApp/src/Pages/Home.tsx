@@ -1,16 +1,17 @@
-import React from 'react';
+import  * as React from 'react';
 
 import { WeatherContext } from "../Context/WeatherContext";
 
 export default () => {
-    const { forecasts, setForecasts } = React.useContext(WeatherContext);
+    const { forecast, setForecasts } = React.useContext(WeatherContext);
 
     const [zipcode, setZipcode] = React.useState("");
 
     const populateWeatherData = async () => {
         const response = await fetch('weatherforecast?zipcode=' + zipcode);
-        const data = await response.json();
 
+        const data = await response.json();
+        
         setForecasts(data);
     }
 
@@ -19,9 +20,11 @@ export default () => {
         <button onClick={populateWeatherData}> Fetch</button>
 
         <section>
-        {
-            forecasts.map((e, i) => <p>{e.temperatureC} degrees C</p>)
-        }
+            {forecast.current && <h3>Current Temp: {forecast.current.temperatureC} degress C</h3>}
+            {forecast.daily.length > 0 && <h3>Daily Temp</h3>}
+            {
+                forecast.daily.map((e, i) => <p key={"p"+i}>{e.date} // {e.temperatureC} degrees C</p>)
+            }
         </section>
     </div>
 }

@@ -5,16 +5,15 @@ import Layout from './components/Layout';
 import Home from './Pages/Home';
 import FetchData from './Pages/FetchData';
 
-import { WeatherContext } from "./Context/WeatherContext"
-import { IForecast } from './models';
+import { WeatherContext, defaultForecast } from "./Context/WeatherContext"
 
 import './custom.css'
 
 export default () => {
-    const [forecasts, setForecasts] = React.useState(new Array<IForecast>());
+    const [forecast, setForecasts] = React.useState(defaultForecast);
 
     return <Layout>
-        <WeatherContext.Provider value={{ forecasts, setForecasts }}>
+        <WeatherContext.Provider value={{ forecast, setForecasts }}>
             <Route exact path='/' component={Home} />
             <Route path='/fetch-data' component={FetchData} />
         </WeatherContext.Provider>

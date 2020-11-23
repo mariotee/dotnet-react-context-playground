@@ -1,8 +1,14 @@
-﻿import React from "react";
+﻿import * as React from "react";
 
-import { IForecast } from "../models";
+import { IWeatherForecast, IWeatherRecord } from "../models";
+
+export const defaultForecast: IWeatherForecast = {
+    current: null as unknown as IWeatherRecord,
+    hourly: [],
+    daily: [],
+};
 
 export const WeatherContext = React.createContext({
-    forecasts: new Array<IForecast>(),
-    setForecasts: (input: IForecast[]) => { },
+    forecast: defaultForecast,
+    setForecasts: (input: IWeatherForecast) => { },
 });

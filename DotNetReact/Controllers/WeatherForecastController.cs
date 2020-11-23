@@ -3,6 +3,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Newtonsoft.Json.Linq;
 using System;
+using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 
@@ -45,11 +46,31 @@ namespace DotNetReact.Controllers
 
             var json = JObject.Parse(await res.Content.ReadAsStringAsync());
 
+            var current = GetWeatherRecordFromJson(json["current"]);
+            var hourly = json["hourly"].Select((j) => GetWeatherRecordFromJson(j));
+            var daily = json["daily"].Select((j) => GetWeatherRecordFromJson(j));
+
             return new WeatherForecast
             {
-                Current = null,
-                Hourly = null,
-                Daily = null,
+                Current = current,
+                Hourly = hourly,
+                Daily = daily,
+            };
+        }
+
+        private static WeatherRecord GetWeatherRecordFromJson(JToken json)
+        {
+            var temp = json switch
+            {
+                JToken when json["temp"] is JObject o => o["day"].Value<int>(),
+                _ => json["temp"].Value<int>(),
+            };
+
+            return new WeatherRecord
+            {
+                Date = new DateTime(1970,1,1,0,0,0,0,DateTimeKind.Utc).AddSeconds(json["dt"].Value<long>()).ToLocalTime(),
+                Summary = json["weather"].First()["description"].Value<string>(),
+                TemperatureC = temp,
             };
         }
 
