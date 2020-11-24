@@ -1,4 +1,4 @@
-﻿namespace DotNetReact
+﻿namespace DotNetReact.Options
 {
     public static class OptionsKeys
     {

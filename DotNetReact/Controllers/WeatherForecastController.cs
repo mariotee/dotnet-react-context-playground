@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using DotNetReact.Models;
+using DotNetReact.Options;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Newtonsoft.Json.Linq;
@@ -48,7 +50,7 @@ namespace DotNetReact.Controllers
 
             var current = GetWeatherRecordFromJson(json["current"]);
             var hourly = json["hourly"].Select((j) => GetWeatherRecordFromJson(j));
-            var daily = json["daily"].Select((j) => GetWeatherRecordFromJson(j));
+            var daily = json["daily"].Select((j) => GetDailyWeatherRecordFromJson(j));
 
             return new WeatherForecast
             {
@@ -58,19 +60,25 @@ namespace DotNetReact.Controllers
             };
         }
 
+        private static DailyWeatherRecord GetDailyWeatherRecordFromJson(JToken json)
+        {
+            return new DailyWeatherRecord
+            {
+                Date = new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc).AddSeconds(json["dt"].Value<long>()).ToLocalTime(),
+                Summary = json["weather"].First()["description"].Value<string>(),
+                DayTemp = json["temp"]["day"].Value<double>(),
+                MinTemp = json["temp"]["min"].Value<double>(),
+                MaxTemp = json["temp"]["max"].Value<double>(),
+            };
+        }
+
         private static WeatherRecord GetWeatherRecordFromJson(JToken json)
         {
-            var temp = json switch
-            {
-                JToken when json["temp"] is JObject o => o["day"].Value<int>(),
-                _ => json["temp"].Value<int>(),
-            };
-
             return new WeatherRecord
             {
-                Date = new DateTime(1970,1,1,0,0,0,0,DateTimeKind.Utc).AddSeconds(json["dt"].Value<long>()).ToLocalTime(),
+                Date = new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc).AddSeconds(json["dt"].Value<long>()).ToLocalTime(),
+                Temp = json["temp"].Value<double>(),
                 Summary = json["weather"].First()["description"].Value<string>(),
-                TemperatureC = temp,
             };
         }
 

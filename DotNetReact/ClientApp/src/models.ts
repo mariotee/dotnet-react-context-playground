@@ -1,12 +1,19 @@
 ﻿export interface IWeatherForecast {
     current: IWeatherRecord;
     hourly: IWeatherRecord[];
-    daily: IWeatherRecord[];
+    daily: IDailyWeatherRecord[];
 }
 
 export interface IWeatherRecord {
     date: Date;
-    temperatureC: number;
-    temperatureF: number;
+    temp: number;
+    summary: string;
+}
+
+export interface IDailyWeatherRecord {
+    date: Date;
+    dayTemp: number;
+    minTemp: number;
+    maxTemp: number;
     summary: string;
 }
