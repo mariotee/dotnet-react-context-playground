@@ -11,9 +11,10 @@ import './custom.css'
 
 export default () => {
     const [forecast, setForecasts] = React.useState(defaultForecast);
+    const [isFahrenheit, setFahrenheit] = React.useState(false);
 
     return <Layout>
-        <WeatherContext.Provider value={{ forecast, setForecasts }}>
+        <WeatherContext.Provider value={{ forecast, setForecasts, isFahrenheit, setFahrenheit }}>
             <Route exact path='/' component={Home} />
             <Route path='/hourly' component={HourlyForecast} />
         </WeatherContext.Provider>
