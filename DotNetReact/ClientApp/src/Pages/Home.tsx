@@ -1,6 +1,7 @@
-import  * as React from 'react';
+import * as React from 'react';
 
 import { WeatherContext } from "../Context/WeatherContext";
+import { ToFahrenheit } from "../Util/Weather"
 
 export default () => {
     const { forecast, setForecasts } = React.useContext(WeatherContext);
@@ -30,7 +31,7 @@ export default () => {
     }
 
     const renderTable = () => {
-        return <table className="table">
+        return <table className="table table-striped table-bordered">
             <thead>
                 <tr className="font-weight-bold">
                     <td>Date</td>
@@ -44,10 +45,10 @@ export default () => {
             {
                 forecast.daily.map((e, i) => <tr key={"tr" + i}>
                     <td>{new Date(e.date).toDateString()}</td>
-                    <td>{isFahrenheit ? (e.dayTemp * 1.8 + 32).toFixed(2) : e.dayTemp}</td>
+                    <td>{isFahrenheit ? ToFahrenheit(e.dayTemp) : e.dayTemp}</td>
                     <td>{e.summary}</td>
-                    <td>{isFahrenheit ? (e.minTemp * 1.8 + 32).toFixed(2) : e.minTemp}</td>
-                    <td>{isFahrenheit ? (e.maxTemp * 1.8 + 32).toFixed(2) : e.maxTemp}</td>
+                    <td>{isFahrenheit ? ToFahrenheit(e.minTemp) : e.minTemp}</td>
+                    <td>{isFahrenheit ? ToFahrenheit(e.maxTemp) : e.maxTemp}</td>
                 </tr>)
             }
             </tbody>
@@ -70,7 +71,7 @@ export default () => {
         {
             forecast.current && <h3>Current Temp: 
             {
-                (isFahrenheit ? (forecast.current.temp * 1.8 + 32).toFixed(2) : forecast.current.temp)
+                isFahrenheit ? ToFahrenheit(forecast.current.temp) : forecast.current.temp
             }
             {
                 isFahrenheit ? "°­F" : "°C"
