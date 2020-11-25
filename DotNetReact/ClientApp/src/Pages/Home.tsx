@@ -1,7 +1,6 @@
 import  * as React from 'react';
 
 import { WeatherContext } from "../Context/WeatherContext";
-import { IDailyWeatherRecord } from '../models';
 
 export default () => {
     const { forecast, setForecasts } = React.useContext(WeatherContext);
@@ -12,7 +11,7 @@ export default () => {
 
     const populateWeatherData = async () => {
         setLoading(true);
-        const response = await fetch('weatherforecast?zipcode=' + zipcode);
+        const response = await fetch(`weatherforecast?zipcode=${zipcode}`);
 
         const data = await response.json();
         
@@ -30,7 +29,7 @@ export default () => {
         setFahrenheit(!isFahrenheit);
     }
 
-    const renderTable = (data: IDailyWeatherRecord[], isF: boolean) => {
+    const renderTable = () => {
         return <table className="table">
             <thead>
                 <tr className="font-weight-bold">
@@ -45,10 +44,10 @@ export default () => {
             {
                 forecast.daily.map((e, i) => <tr key={"tr" + i}>
                     <td>{new Date(e.date).toDateString()}</td>
-                    <td>{isF ? (e.dayTemp * 1.8 + 32).toFixed(2) : e.dayTemp}</td>
+                    <td>{isFahrenheit ? (e.dayTemp * 1.8 + 32).toFixed(2) : e.dayTemp}</td>
                     <td>{e.summary}</td>
-                    <td>{isF ? (e.minTemp * 1.8 + 32).toFixed(2) : e.minTemp}</td>
-                    <td>{isF ? (e.maxTemp * 1.8 + 32).toFixed(2) : e.maxTemp}</td>
+                    <td>{isFahrenheit ? (e.minTemp * 1.8 + 32).toFixed(2) : e.minTemp}</td>
+                    <td>{isFahrenheit ? (e.maxTemp * 1.8 + 32).toFixed(2) : e.maxTemp}</td>
                 </tr>)
             }
             </tbody>
@@ -67,7 +66,7 @@ export default () => {
             </section>
         </div>        
 
-        { loading && "Loading..."}
+        { loading && "Loading..." }
         {
             forecast.current && <h3>Current Temp: 
             {
@@ -82,7 +81,7 @@ export default () => {
             forecast.daily && <h3>Daily Temp</h3>
         }
         {
-            forecast.daily && renderTable(forecast.daily, isFahrenheit)
+            forecast.daily && renderTable()
         }
     </main>
 }
