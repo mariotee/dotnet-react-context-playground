@@ -58,10 +58,10 @@ export default () => {
         <div className="d-flex justify-content-between">
             <section>
                 <input placeholder={"Enter Zipcode"} value={zipcode} onChange={(e) => setZipcode(e.target.value)} onKeyPress={checkEnter} />
-                <button className="btn-primary mx-2" onClick={populateWeatherData}> Fetch</button>
+                <button className="btn-primary mx-2" onClick={populateWeatherData}>Fetch</button>
             </section>
             <section>
-                <label className="mx-2 font-weight-bold">Toggle Farenheit</label>
+                <label className="mx-2 font-weight-bold">Toggle Fahrenheit</label>
                 <input className="mx-2" type="checkbox" onChange={toggleFahrenheit} checked={isFahrenheit}/>
             </section>
         </div>        

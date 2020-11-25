@@ -7,10 +7,10 @@ interface IProps {
 }
 
 export default (props: IProps) => {
-    return <div>
+    return <React.Fragment>
         <NavMenu />
         <Container>
             {props.children}
         </Container>
-    </div>
+    </React.Fragment>
 }
