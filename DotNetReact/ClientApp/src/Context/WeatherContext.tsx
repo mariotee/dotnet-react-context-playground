@@ -11,6 +11,4 @@ export const defaultForecast: IWeatherForecast = {
 export const WeatherContext = React.createContext({
     forecast: defaultForecast,
     setForecasts: (input: IWeatherForecast) => { },
-    isFahrenheit: false,
-    setFahrenheit: (input: boolean) => {},
 });

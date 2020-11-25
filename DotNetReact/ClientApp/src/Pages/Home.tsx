@@ -1,11 +1,12 @@
 import * as React from 'react';
+import { useAppStateContext } from '../Context/AppStateContext';
 
 import { WeatherContext } from "../Context/WeatherContext";
 import { ToFahrenheit } from "../Util/Weather"
 
 export default () => {
     const { forecast, setForecasts } = React.useContext(WeatherContext);
-    const { isFahrenheit, setFahrenheit } = React.useContext(WeatherContext);
+    const { isFahrenheit, setFahrenheit } = useAppStateContext();
 
     const [zipcode, setZipcode] = React.useState("");
     const [loading, setLoading] = React.useState(false);
