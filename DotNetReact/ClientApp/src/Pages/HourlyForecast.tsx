@@ -1,8 +1,9 @@
 import * as React from 'react';
-import { useAppStateContext } from '../Context/AppStateContext';
 
-import { WeatherContext } from "../Context/WeatherContext"
-import { ToFahrenheit } from '../Util/Weather';
+import { useAppStateContext } from 'Context/AppStateContext';
+
+import { WeatherContext } from "Context/WeatherContext"
+import { ToFahrenheit } from 'Util/Weather';
 
 export default () => {
     const { forecast } = React.useContext(WeatherContext);

@@ -1,8 +1,9 @@
 import * as React from 'react';
-import { useAppStateContext } from '../Context/AppStateContext';
 
-import { WeatherContext } from "../Context/WeatherContext";
-import { ToFahrenheit } from "../Util/Weather"
+import { useAppStateContext } from 'Context/AppStateContext';
+
+import { WeatherContext } from "Context/WeatherContext";
+import { ToFahrenheit } from "Util/Weather"
 
 export default () => {
     const { forecast, setForecasts } = React.useContext(WeatherContext);
@@ -57,6 +58,7 @@ export default () => {
     }
 
     return <main>
+        <h1>Home Page</h1>
         <div className="d-flex justify-content-between">
             <section>
                 <input placeholder={"Enter Zipcode"} value={zipcode} onChange={(e) => setZipcode(e.target.value)} onKeyPress={checkEnter} />

@@ -1,12 +1,12 @@
 import * as React from 'react';
 import { Route } from 'react-router';
 
-import Layout from './components/Layout';
-import Home from './Pages/Home';
-import HourlyForecast from './Pages/HourlyForecast';
+import Layout from 'components/Layout';
+import Home from 'Pages/Home';
+import HourlyForecast from 'Pages/HourlyForecast';
 
-import { WeatherContext, defaultForecast } from "./Context/WeatherContext"
-import { AppStateContextProvider } from "./Context/AppStateContext";
+import { WeatherContext, defaultForecast } from "Context/WeatherContext"
+import { AppStateContextProvider } from "Context/AppStateContext";
 
 import './custom.css'
 
