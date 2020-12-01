@@ -6,8 +6,8 @@ import { WeatherContext } from "Context/WeatherContext"
 import { ToFahrenheit } from 'Util/Weather';
 
 export default () => {
-    const { forecast } = React.useContext(WeatherContext);
     const { isFahrenheit } = useAppStateContext();
+    const { forecast } = React.useContext(WeatherContext);
 
     return <main>
         <h3>Hourly Forecast</h3>

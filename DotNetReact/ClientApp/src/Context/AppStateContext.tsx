@@ -1,6 +1,8 @@
 import * as React from "react";
 
 interface IAppState {
+    currentZipcode: string,
+    setCurrentZipcode(input: string): void;
     savedZipcodes: string[];
     setSavedZipcodes(input:string[]): void;
     isFahrenheit: boolean;
@@ -14,10 +16,13 @@ interface IProps {
 const GlobalStateContext = React.createContext(null as unknown as IAppState);
 
 export const AppStateContextProvider = (props: IProps) => {
+    const [currentZipcode, setCurrentZipcode] = React.useState("");
     const [savedZipcodes, setSavedZipcodes] = React.useState([] as string[]);
     const [isFahrenheit, setFahrenheit] = React.useState(false);
 
-    const state = {
+    const state: IAppState = {
+        currentZipcode,
+        setCurrentZipcode,
         savedZipcodes,
         setSavedZipcodes,
         isFahrenheit,
