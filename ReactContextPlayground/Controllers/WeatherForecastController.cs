@@ -1,5 +1,5 @@
-﻿using DotNetReact.Models;
-using DotNetReact.Options;
+﻿using ReactContextPlayground.Models;
+using ReactContextPlayground.Options;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
@@ -9,7 +9,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 
-namespace DotNetReact.Controllers
+namespace ReactContextPlayground.Controllers
 {
     [ApiController]
     [Route("[controller]")]

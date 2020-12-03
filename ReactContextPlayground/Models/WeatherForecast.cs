@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace DotNetReact.Models
+namespace ReactContextPlayground.Models
 {
     public class WeatherForecast
     {

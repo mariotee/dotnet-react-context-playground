@@ -1,4 +1,4 @@
-using DotNetReact.Options;
+using ReactContextPlayground.Options;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
@@ -7,7 +7,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Options;
 
-namespace DotNetReact
+namespace ReactContextPlayground
 {
     public class Startup
     {

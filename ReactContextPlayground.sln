@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30709.132
 MinimumVisualStudioVersion = 15.0.26124.0
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotNetReact", "DotNetReact\DotNetReact.csproj", "{F637413E-810C-4C3A-8E83-E795DB51CC0C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReactContextPlayground", "ReactContextPlayground\ReactContextPlayground.csproj", "{972E9684-B0A6-4CDE-826A-1085C4BE4560}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +11,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{F637413E-810C-4C3A-8E83-E795DB51CC0C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F637413E-810C-4C3A-8E83-E795DB51CC0C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F637413E-810C-4C3A-8E83-E795DB51CC0C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F637413E-810C-4C3A-8E83-E795DB51CC0C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{972E9684-B0A6-4CDE-826A-1085C4BE4560}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{972E9684-B0A6-4CDE-826A-1085C4BE4560}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{972E9684-B0A6-4CDE-826A-1085C4BE4560}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{972E9684-B0A6-4CDE-826A-1085C4BE4560}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,4 +1,4 @@
-﻿namespace DotNetReact.Options
+﻿namespace ReactContextPlayground.Options
 {
     public static class OptionsKeys
     {

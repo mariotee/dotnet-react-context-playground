@@ -1,6 +1,6 @@
 {
-  "short_name": "DotNetReact",
-  "name": "DotNetReact",
+  "short_name": "ReactContextPlayground",
+  "name": "ReactContextPlayground",
   "icons": [
     {
       "src": "favicon.ico",
