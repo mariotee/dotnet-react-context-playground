@@ -18,7 +18,6 @@ export default (props: IProps) => {
     }
 
     return <React.Fragment>
-        <h1>Weather</h1>
         <div className="d-flex justify-content-between">
             <section>
                 <input placeholder={"Enter Zipcode"} value={currentZipcode} onChange={(e) => setCurrentZipcode(e.target.value)} onKeyPress={checkEnter} />

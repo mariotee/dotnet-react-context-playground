@@ -19,6 +19,7 @@ interface IContextProps {
 
 const WeatherContext = React.createContext(undefined as unknown as IWeatherState);
 
+//export context provider and custom hook
 export const WeatherContextProvider = (props: IContextProps) => {
     const [forecast, setForecast] = React.useState(undefined as unknown as IWeatherForecast);
     const [currentZipcode, setCurrentZipcode] = React.useState("");

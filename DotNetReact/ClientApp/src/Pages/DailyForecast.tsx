@@ -1,5 +1,6 @@
 import * as React from 'react';
 
+import { useAppStateContext } from 'Context/AppStateContext';
 import { useWeatherContext } from "Context/WeatherContext";
 
 import DailyForecastTable from 'components/Weather/DailyForecastTable';
@@ -8,6 +9,7 @@ import DailyTempControls from 'components/Weather/DailyTempControls';
 import LoadingSpinner from 'components/Weather/LoadingSpinner';
 
 export default () => {
+    const { authenticated } = useAppStateContext();    
     const { forecast, setForecast, currentZipcode, isFahrenheit } = useWeatherContext();
 
     const [loading, setLoading] = React.useState(false);
@@ -22,16 +24,19 @@ export default () => {
         setLoading(false);
     }
 
-    return <main>
-        <DailyTempControls populateWeatherData={populateWeatherData}/>
-        { 
-            loading && <LoadingSpinner />
-        }
-        {
-            forecast && forecast.current && <CurrentTempHeader currentTemp={forecast.current.temp} isFahrenheit={isFahrenheit} />
-        }
-        {
-            forecast && forecast.daily && <DailyForecastTable forecast={forecast} isFahrenheit={isFahrenheit} />
-        }
-    </main>
+    return authenticated 
+        ? <main>
+            <h2>Daily Forecast</h2>
+            <DailyTempControls populateWeatherData={populateWeatherData}/>
+            { 
+                loading && <LoadingSpinner />
+            }
+            {
+                forecast && forecast.current && <CurrentTempHeader currentTemp={forecast.current.temp} isFahrenheit={isFahrenheit} />
+            }
+            {
+                forecast && forecast.daily && <DailyForecastTable forecast={forecast} isFahrenheit={isFahrenheit} />
+            }
+        </main>
+        : <p>not logged in</p>
 }
