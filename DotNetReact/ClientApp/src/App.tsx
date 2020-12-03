@@ -6,16 +6,18 @@ import Login from "Pages/Login";
 import DailyForecast from 'Pages/DailyForecast';
 import HourlyForecast from 'Pages/HourlyForecast';
 
-import { WeatherContextProvider } from "Context/WeatherContext"
+//this context is to demonstrate a global app state
 import { AppStateContextProvider } from "Context/AppStateContext";
+//this context is to demonstrate a shareable state that may not be needed in the whole app
+import { WeatherContextProvider } from "Context/WeatherContext"
 
 import './custom.css'
 
 export default () => {
     return <Layout>
         <AppStateContextProvider>
+            <Route exact path='/' component={Login} />
             <WeatherContextProvider>
-                <Route exact path='/' component={Login} />
                 <Route path='/daily' component={DailyForecast} />
                 <Route path='/hourly' component={HourlyForecast} />
             </WeatherContextProvider>

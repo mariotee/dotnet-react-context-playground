@@ -6,8 +6,6 @@ interface IProps {
     populateWeatherData(): Promise<void>,
 }
 
-
-
 export default (props: IProps) => {
     const {currentZipcode, setCurrentZipcode, isFahrenheit, setFahrenheit} = useWeatherContext();
 

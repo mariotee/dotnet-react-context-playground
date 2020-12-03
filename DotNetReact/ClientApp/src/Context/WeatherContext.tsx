@@ -13,14 +13,10 @@ interface IWeatherState {
     setFahrenheit(input:boolean):void;
 }
 
-interface IContextProps {
-    children: React.ReactNode;
-}
-
 const WeatherContext = React.createContext(undefined as unknown as IWeatherState);
 
 //export context provider and custom hook
-export const WeatherContextProvider = (props: IContextProps) => {
+export const WeatherContextProvider: React.FunctionComponent = (props) => {
     const [forecast, setForecast] = React.useState(undefined as unknown as IWeatherForecast);
     const [currentZipcode, setCurrentZipcode] = React.useState("");
     const [savedZipcodes, setSavedZipcodes] = React.useState([] as string[]);

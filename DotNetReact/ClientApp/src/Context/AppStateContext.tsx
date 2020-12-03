@@ -7,14 +7,10 @@ interface IAppState {
     setUsername(input: string): void;    
 }
 
-interface IContextProps {
-    children: React.ReactNode;
-}
-
 const GlobalStateContext = React.createContext(undefined as unknown as IAppState);
 
 //export context provider and custom hook
-export const AppStateContextProvider = (props: IContextProps) => {
+export const AppStateContextProvider: React.FunctionComponent = (props) => {
     const [authenticated, setAuthenticated] = React.useState(false);
     const [username, setUsername] = React.useState("");
     
