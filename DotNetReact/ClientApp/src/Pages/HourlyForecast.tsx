@@ -1,13 +1,10 @@
 import * as React from 'react';
 
-import { useAppStateContext } from 'Context/AppStateContext';
-
-import { WeatherContext } from "Context/WeatherContext"
+import { useWeatherContext } from "Context/WeatherContext"
 import { ToFahrenheit } from 'Util/Weather';
 
 export default () => {
-    const { isFahrenheit } = useAppStateContext();
-    const { forecast } = React.useContext(WeatherContext);
+    const { forecast, isFahrenheit } = useWeatherContext();
 
     return <main>
         <h3>Hourly Forecast</h3>
@@ -21,7 +18,7 @@ export default () => {
             </thead>
             <tbody>
             {
-                forecast.hourly && forecast.hourly.map((e, i) => <tr key={"tr" + i}>
+                forecast && forecast.hourly && forecast.hourly.map((e, i) => <tr key={"tr" + i}>
                     <td>{new Date(e.date).toDateString()}{" @ "}{new Date(e.date).toLocaleString('en-US', { hour: 'numeric', hour12: true })}</td>
                     <td>{isFahrenheit ? ToFahrenheit(e.temp) : e.temp}</td>
                     <td>{e.summary}</td>

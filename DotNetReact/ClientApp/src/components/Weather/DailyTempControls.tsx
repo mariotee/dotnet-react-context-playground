@@ -1,5 +1,6 @@
-import { useAppStateContext } from "Context/AppStateContext";
 import * as React from "react";
+
+import { useWeatherContext } from "Context/WeatherContext";
 
 interface IProps {
     populateWeatherData(): Promise<void>,
@@ -8,7 +9,7 @@ interface IProps {
 
 
 export default (props: IProps) => {
-    const {currentZipcode, setCurrentZipcode, isFahrenheit, setFahrenheit} = useAppStateContext();
+    const {currentZipcode, setCurrentZipcode, isFahrenheit, setFahrenheit} = useWeatherContext();
 
     const checkEnter = async (e: React.KeyboardEvent) => {
         if (e.key === "Enter") {

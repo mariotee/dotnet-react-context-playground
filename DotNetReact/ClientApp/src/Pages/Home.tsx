@@ -1,17 +1,14 @@
 import * as React from 'react';
 
-import { useAppStateContext } from 'Context/AppStateContext';
-
-import { WeatherContext } from "Context/WeatherContext";
+import { useWeatherContext } from "Context/WeatherContext";
 
 import DailyForecastTable from 'components/Weather/DailyForecastTable';
 import CurrentTempHeader from 'components/Weather/CurrentTempHeader';
-import DailyTempHeader from 'components/Weather/DailyTempHeader';
+import DailyTempControls from 'components/Weather/DailyTempControls';
 import LoadingSpinner from 'components/Weather/LoadingSpinner';
 
 export default () => {
-    const { currentZipcode, isFahrenheit } = useAppStateContext();
-    const { forecast, setForecasts } = React.useContext(WeatherContext);
+    const { forecast, setForecast, currentZipcode, isFahrenheit } = useWeatherContext();
 
     const [loading, setLoading] = React.useState(false);
 
@@ -21,20 +18,20 @@ export default () => {
 
         const data = await response.json();
         
-        setForecasts(data);
+        setForecast(data);
         setLoading(false);
     }
 
     return <main>
-        <DailyTempHeader populateWeatherData={populateWeatherData}/>
+        <DailyTempControls populateWeatherData={populateWeatherData}/>
         { 
             loading && <LoadingSpinner />
         }
         {
-            forecast.current && <CurrentTempHeader currentTemp={forecast.current.temp} isFahrenheit={isFahrenheit} />
+            forecast && forecast.current && <CurrentTempHeader currentTemp={forecast.current.temp} isFahrenheit={isFahrenheit} />
         }
         {
-            forecast.daily && <DailyForecastTable forecast={forecast} isFahrenheit={isFahrenheit} />
+            forecast && forecast.daily && <DailyForecastTable forecast={forecast} isFahrenheit={isFahrenheit} />
         }
     </main>
 }
