@@ -13,7 +13,7 @@ import { WeatherContextProvider } from "Context/WeatherContext"
 
 import './custom.css'
 
-export default () => {
+export default function App() {
     return <Layout>
         <AppStateContextProvider>
             <Route exact path='/' component={Login} />

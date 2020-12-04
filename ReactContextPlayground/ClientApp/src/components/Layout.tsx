@@ -7,7 +7,7 @@ interface IProps {
     children: React.ReactNode;
 }
 
-export default (props: IProps) => {
+export default function Layout(props: IProps) {
     return <React.Fragment>
         <NavMenu />
         <Container>

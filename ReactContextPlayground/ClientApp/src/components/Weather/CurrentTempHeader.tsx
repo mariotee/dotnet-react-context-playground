@@ -7,6 +7,8 @@ interface IProps {
     isFahrenheit: boolean,
 }
 
-export default (props: IProps) => <h3>
-    Current Temp: {props.isFahrenheit ? ToFahrenheit(props.currentTemp) : props.currentTemp} {props.isFahrenheit ? "°­F" : "°C"}
-</h3>
+export default function CurrentTempHeader(props: IProps) {
+    return  <h3>
+        Current Temp: {props.isFahrenheit ? ToFahrenheit(props.currentTemp) : props.currentTemp} {props.isFahrenheit ? "°­F" : "°C"}
+    </h3>
+}

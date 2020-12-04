@@ -8,9 +8,9 @@ interface IWeatherState {
     currentZipcode: string,
     setCurrentZipcode(input: string): void;
     savedZipcodes: string[];
-    setSavedZipcodes(input:string[]): void;
+    setSavedZipcodes(input: string[]): void;
     isFahrenheit: boolean;
-    setFahrenheit(input:boolean):void;
+    setFahrenheit(input: boolean):void;
 }
 
 const WeatherContext = React.createContext(undefined as unknown as IWeatherState);

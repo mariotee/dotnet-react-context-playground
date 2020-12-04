@@ -5,7 +5,7 @@ import { useWeatherContext } from "Context/WeatherContext"
 
 import { ToFahrenheit } from 'Util/Weather';
 
-export default () => {
+export default function HourlyForecastPage() {
     const { authenticated } = useAppStateContext();
     const { forecast, isFahrenheit } = useWeatherContext();
 

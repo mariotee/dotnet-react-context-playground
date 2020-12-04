@@ -4,7 +4,7 @@ import { useAppStateContext } from "Context/AppStateContext";
 
 import FakeLogin from "components/Auth/FakeLogin";
 
-export default () => {
+export default function LoginPage() {
     const { authenticated, username } = useAppStateContext();
 
     return <React.Fragment>
