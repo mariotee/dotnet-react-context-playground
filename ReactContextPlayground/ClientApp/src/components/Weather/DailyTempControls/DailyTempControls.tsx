@@ -17,18 +17,18 @@ export default function DailyTempControls(props: IProps) {
         }
     }
 
-    const clickSavedZipcode = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const changeZipcode = (e: React.ChangeEvent<HTMLSelectElement|HTMLInputElement>) => {
         setCurrentZipcode(e.target.value);
     }
 
     return <div className="d-flex justify-content-between">
         <section>
-            <input placeholder={"Enter Zipcode"} value={currentZipcode} onChange={(e) => setCurrentZipcode(e.target.value)} onKeyPress={checkEnter} />
+            <input placeholder={"Enter Zipcode"} value={currentZipcode} onChange={changeZipcode} onKeyPress={checkEnter} />
             <button className="btn-primary mx-2" onClick={() => props.populateWeatherData()}>Fetch</button>
         </section>
         <section>
             <label className="mx-2">Last 5 (unique) searches</label>
-            <select className={styles.zipcodes} onChange={clickSavedZipcode}>
+            <select className={styles.zipcodes} onChange={changeZipcode}>
             {
                 savedZipcodes.map((e,i) => <option key={"o"+i} value={e}>{e}</option>)
             }
