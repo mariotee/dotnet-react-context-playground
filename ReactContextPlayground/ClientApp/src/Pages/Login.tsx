@@ -4,6 +4,8 @@ import { useAppStateContext } from "Context/AppStateContext";
 
 import FakeLogin from "components/Auth/FakeLogin";
 
+import { Toast, ToastBody, ToastHeader } from "reactstrap"
+
 export default function LoginPage() {
     const { authenticated, username } = useAppStateContext();
 
@@ -12,9 +14,13 @@ export default function LoginPage() {
 
         {/* this component is just to show how an app state login can be set */}
         <FakeLogin />
-        {
-            authenticated && <p>Logged in. Welcome {username}!</p>
-        }
+
+        {/*a kind of bad usage of this component, but i just wanted a better looking success message*/}
+        <Toast isOpen={authenticated}>
+            <ToastHeader icon="success">Successful Login</ToastHeader>
+            <ToastBody>Welcome {username}!</ToastBody>
+        </Toast>
+        
 
     </React.Fragment>
 }
