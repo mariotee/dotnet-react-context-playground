@@ -11,7 +11,7 @@ export default function HourlyForecastPage() {
 
     return authenticated
         ? <main>
-            <h3>Hourly Forecast</h3>
+            <h3>24-Hour Hourly Forecast</h3>
             <table className="table table-striped table-bordered table-sm">
                 <thead className="font-weight-bold">
                     <tr>
@@ -22,7 +22,7 @@ export default function HourlyForecastPage() {
                 </thead>
                 <tbody>
                 {
-                    forecast && forecast.hourly && forecast.hourly.map((e, i) => <tr key={"tr" + i}>
+                    forecast && forecast.hourly && forecast.hourly.slice(0,25).map((e, i) => <tr key={"tr" + i}>
                         <td>{new Date(e.date).toDateString()}{" @ "}{new Date(e.date).toLocaleString('en-US', { hour: 'numeric', hour12: true })}</td>
                         <td>{isFahrenheit ? ToFahrenheit(e.temp) : e.temp}</td>
                         <td>{e.summary}</td>
